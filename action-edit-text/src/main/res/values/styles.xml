@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="ActionEditText">
+		<attr name="aed_label" format="string"/>
+		<attr name="aed_labelColor" format="color"/>
+		<attr name="aed_labelSize" format="dimension"/>
+		<attr name="aed_text" format="string"/>
+		<attr name="aed_textColor" format="color"/>
+		<attr name="aed_textSize" format="dimension"/>
+		<attr name="aed_hint" format="string"/>
+		<attr name="aed_hintColor" format="color"/>
+		<attr name="aed_error" format="string"/>
+		<attr name="aed_errorColor" format="color"/>
+		<attr name="aed_errorSize" format="dimension"/>
+		<attr name="aed_editable" format="boolean"/>
+		<attr name="aed_inputType" format="enum">
+			<enum name="TEXT" value="1"/>
+			<enum name="MULTILINE" value="131072"/>
+			<enum name="PASSWORD" value="129"/>
+			<enum name="PASSWORD_VISIBLE" value="144"/>
+			<enum name="NUMERIC" value="18"/>
+			<enum name="NUMERIC_VISIBLE" value="2"/>
+			<enum name="AUTOCOMPLETE" value="65536"/>
+		</attr>
+		<attr name="aed_textGravity" format="enum">
+			<enum name="NONE" value="0"/>
+			<enum name="START" value="8388611"/>
+			<enum name="CENTER" value="17"/>
+			<enum name="END" value="8388613"/>
+			<enum name="TOP" value="48"/>
+			<enum name="BOTTOM" value="80"/>
+		</attr>
+		<attr name="aed_textAlign" format="enum">
+			<enum name="NONE" value="0"/>
+			<enum name="START" value="8388611"/>
+			<enum name="CENTER" value="17"/>
+			<enum name="END" value="8388613"/>
+			<enum name="TOP" value="48"/>
+			<enum name="BOTTOM" value="80"/>
+		</attr>
+		<attr name="aed_maxLength" format="integer"/>
+		<attr name="aed_focusedLineColor" format="color"/>
+		<attr name="aed_normalLineColor" format="color"/>
+		<attr name="aed_tintAllOnError" format="boolean"/>
+		<attr name="aed_errorEnabled" format="boolean"/>
+		<attr name="aed_labelEnabled" format="boolean"/>
+	</declare-styleable>
+</resources>
