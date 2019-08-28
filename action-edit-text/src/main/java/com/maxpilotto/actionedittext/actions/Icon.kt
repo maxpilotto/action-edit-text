@@ -19,6 +19,8 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import com.maxpilotto.actionedittext.Default
 import com.maxpilotto.actionedittext.R
@@ -41,6 +43,7 @@ open class Icon : Action<ImageView> {
     /**
      * Tint of the icon
      */
+    @ColorInt
     var tint: Int
         set(value) {
             actionView?.setColorFilter(value, PorterDuff.Mode.SRC_IN)
@@ -67,5 +70,12 @@ open class Icon : Action<ImageView> {
 
     override fun tintAll(applyErrorTint: Boolean) {
         actionView?.setColorFilter(if (applyErrorTint) errorColor else tint, PorterDuff.Mode.SRC_IN)
+    }
+
+    /**
+     * Sets the tint color from a color resource
+     */
+    fun setTintRes(@ColorRes colorRes: Int){
+        tint = context.resources.getColor(colorRes)
     }
 }

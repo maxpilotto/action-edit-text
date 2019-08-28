@@ -22,7 +22,7 @@ A customizable EditText that supports actions and has a quick way of validating 
 # Getting started
 ```gradle 
 dependencies {
-	implementation 'com.maxpilotto:action-edit-text:1.0.0'
+	implementation 'com.maxpilotto:action-edit-text:2.0.0'
 }
 ```
 

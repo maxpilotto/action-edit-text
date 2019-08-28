@@ -26,6 +26,7 @@ import com.maxpilotto.actionedittext.actions.Action
 import java.lang.Exception
 import android.R.attr.label
 import android.content.ClipData
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat.getSystemService
 
@@ -252,6 +253,26 @@ abstract class BaseEditText : LinearLayout {
      * Sets the hint's text from a string resource
      */
     abstract fun setHint(@StringRes strRes: Int)
+
+    /**
+     * Sets the text color from a color resource
+     */
+    abstract fun setTextColorRes(@ColorRes colorRes: Int)
+
+    /**
+     * Sets the hint's text color from a color resource
+     */
+    abstract fun setHintColorRes(@ColorRes colorRes: Int)
+
+    /**
+     * Sets the label's text color from a color resource
+     */
+    abstract fun setErrorColorRes(@ColorRes colorRes: Int)
+
+    /**
+     * Sets the label's text color from a color resource
+     */
+    abstract fun setLabelColorRes(@ColorRes colorRes: Int)
 
     /**
      * Appends the given text

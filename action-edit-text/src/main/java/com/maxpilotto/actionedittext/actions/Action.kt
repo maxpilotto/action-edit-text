@@ -19,6 +19,7 @@ import android.content.Context
 import android.util.TypedValue
 import android.view.View
 import android.widget.LinearLayout.LayoutParams
+import androidx.annotation.ColorInt
 import com.maxpilotto.actionedittext.Default
 
 /**
@@ -63,6 +64,7 @@ abstract class Action<T : View>(protected val context: Context) {
      *
      * By default this color will be the same as the BaseEditText this Action is added to
      */
+    @ColorInt
     var errorColor: Int = Default.ERROR_COLOR
 
     /**

@@ -370,6 +370,22 @@ class ActionEditText : BaseEditText {
         hint = context.getString(strRes)
     }
 
+    override fun setTextColorRes(colorRes: Int) {
+        textColor = context.resources.getColor(colorRes)
+    }
+
+    override fun setHintColorRes(colorRes: Int) {
+        hintColor = context.resources.getColor(colorRes)
+    }
+
+    override fun setErrorColorRes(colorRes: Int) {
+        errorColor = context.resources.getColor(colorRes)
+    }
+
+    override fun setLabelColorRes(colorRes: Int) {
+        labelColor = context.resources.getColor(colorRes)
+    }
+
     companion object {
         private val EMPTY_POST_VALIDATE: PostValidateCallback = { _, _, _ -> }
     }

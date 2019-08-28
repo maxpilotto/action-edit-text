@@ -20,6 +20,9 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import com.maxpilotto.actionedittext.Default
 
 /**
@@ -49,6 +52,7 @@ open class Label : Action<TextView> {
     /**
      * Text color
      */
+    @ColorInt
     var textColor: Int
         set(value) {
             actionView?.setTextColor(value)
@@ -73,5 +77,19 @@ open class Label : Action<TextView> {
 
     override fun tintAll(applyErrorTint: Boolean) {
         actionView?.setTextColor(if (applyErrorTint) errorColor else textColor)
+    }
+
+    /**
+     * Sets the text from a text resource
+     */
+    fun setTextRes(@StringRes strRes: Int){
+        text = context.getString(strRes)
+    }
+
+    /**
+     * Sets the text color from a color resource
+     */
+    fun setTextColorRes(@ColorRes colorRes: Int){
+        textColor = context.resources.getColor(colorRes)
     }
 }

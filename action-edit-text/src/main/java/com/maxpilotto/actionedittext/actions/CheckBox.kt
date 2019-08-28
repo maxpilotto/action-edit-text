@@ -19,6 +19,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.widget.CheckBox
 import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.core.widget.CompoundButtonCompat
 import com.maxpilotto.actionedittext.Default
 import com.maxpilotto.actionedittext.R
@@ -83,5 +84,12 @@ open class CheckBox : Action<CheckBox> {
 
             CompoundButtonCompat.setButtonTintList(it, ColorStateList.valueOf(color))
         }
+    }
+
+    /**
+     * Sets the tint color from a color resource
+     */
+    fun setTintRes(@ColorRes colorRes: Int){
+        tint = context.resources.getColor(colorRes)
     }
 }
