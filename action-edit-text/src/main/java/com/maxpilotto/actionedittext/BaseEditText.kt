@@ -59,6 +59,16 @@ abstract class BaseEditText : LinearLayout {
     abstract var textSize: Int
 
     /**
+     * Alignment of the text inside the EditText
+     */
+    abstract var textAlign: Int
+
+    /**
+     * Gravity of the text inside of the EditText, this might be an alternative to [textAlign]
+     */
+    abstract var textGravity: Int
+
+    /**
      * Hint/placeholder for the input field
      */
     abstract var hint: String?
@@ -86,6 +96,16 @@ abstract class BaseEditText : LinearLayout {
     abstract var errorSize: Int
 
     /**
+     * Alignment of the text inside the error
+     */
+    abstract var errorAlign: Int
+
+    /**
+     * Gravity of the text inside of the error, this might be an alternative to [errorAlign]
+     */
+    abstract var errorGravity: Int
+
+    /**
      * Text of the label, set to null to completely hide it
      */
     abstract var label: String?
@@ -95,6 +115,16 @@ abstract class BaseEditText : LinearLayout {
      */
     @get:ColorInt
     abstract var labelColor: Int
+
+    /**
+     * Alignment of the text inside the label
+     */
+    abstract var labelAlign: Int
+
+    /**
+     * Gravity of the text inside of the label, this might be an alternative to [labelAlign]
+     */
+    abstract var labelGravity: Int
 
     /**
      * Size of the label text, in pixels
@@ -110,16 +140,6 @@ abstract class BaseEditText : LinearLayout {
      * Input type of the edit text, can be from [InputType] or Android's [android.text.InputType]
      */
     abstract var inputType: Int
-
-    /**
-     * Alignment of the text inside the EditText
-     */
-    abstract var textAlign: Int
-
-    /**
-     * Gravity of the text inside of the EditText, this might be an alternative to [textAlign]
-     */
-    abstract var textGravity: Int
 
     /**
      * Text validator for this EditText

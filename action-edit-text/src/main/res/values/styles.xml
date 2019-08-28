@@ -38,6 +38,38 @@
 			<enum name="TOP" value="48"/>
 			<enum name="BOTTOM" value="80"/>
 		</attr>
+		<attr name="aed_labelGravity" format="enum">
+			<enum name="NONE" value="0"/>
+			<enum name="START" value="8388611"/>
+			<enum name="CENTER" value="17"/>
+			<enum name="END" value="8388613"/>
+			<enum name="TOP" value="48"/>
+			<enum name="BOTTOM" value="80"/>
+		</attr>
+		<attr name="aed_labelAlign" format="enum">
+			<enum name="NONE" value="0"/>
+			<enum name="START" value="8388611"/>
+			<enum name="CENTER" value="17"/>
+			<enum name="END" value="8388613"/>
+			<enum name="TOP" value="48"/>
+			<enum name="BOTTOM" value="80"/>
+		</attr>
+		<attr name="aed_errorGravity" format="enum">
+			<enum name="NONE" value="0"/>
+			<enum name="START" value="8388611"/>
+			<enum name="CENTER" value="17"/>
+			<enum name="END" value="8388613"/>
+			<enum name="TOP" value="48"/>
+			<enum name="BOTTOM" value="80"/>
+		</attr>
+		<attr name="aed_errorAlign" format="enum">
+			<enum name="NONE" value="0"/>
+			<enum name="START" value="8388611"/>
+			<enum name="CENTER" value="17"/>
+			<enum name="END" value="8388613"/>
+			<enum name="TOP" value="48"/>
+			<enum name="BOTTOM" value="80"/>
+		</attr>
 		<attr name="aed_maxLength" format="integer"/>
 		<attr name="aed_focusedLineColor" format="color"/>
 		<attr name="aed_normalLineColor" format="color"/>
