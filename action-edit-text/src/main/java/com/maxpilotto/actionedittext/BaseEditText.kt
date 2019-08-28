@@ -15,6 +15,7 @@
  */
 package com.maxpilotto.actionedittext
 
+import android.content.ClipboardManager
 import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -22,6 +23,11 @@ import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import com.maxpilotto.actionedittext.Util.attr
 import com.maxpilotto.actionedittext.actions.Action
+import java.lang.Exception
+import android.R.attr.label
+import android.content.ClipData
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat.getSystemService
 
 typealias ActionList = MutableList<Action<*>>
 
@@ -30,7 +36,7 @@ typealias ActionList = MutableList<Action<*>>
  *
  * Created on 13/08/2019 at 15:30
  */
-abstract class BaseEditText : LinearLayout {    //TODO setSelection, copyAll, clear, removeFromSelection
+abstract class BaseEditText : LinearLayout {
     /**
      * List of the actions that were added to this ActionEditText
      */
@@ -203,6 +209,31 @@ abstract class BaseEditText : LinearLayout {    //TODO setSelection, copyAll, cl
     abstract fun setErrorEnabled(enabled: Boolean)
 
     /**
+     * Sets the text cursor position (or selection)
+     */
+    abstract fun setSelection(index: Int)
+
+    /**
+     * Sets the text from a string resource
+     */
+    abstract fun setText(@StringRes strRes: Int)
+
+    /**
+     * Sets the label's text from a string resource
+     */
+    abstract fun setLabel(@StringRes strRes: Int)
+
+    /**
+     * Sets the error's text from a string resource
+     */
+    abstract fun setError(@StringRes strRes: Int)
+
+    /**
+     * Sets the hint's text from a string resource
+     */
+    abstract fun setHint(@StringRes strRes: Int)
+
+    /**
      * Appends the given text
      */
     open fun append(charSeq: CharSequence) {
@@ -218,6 +249,75 @@ abstract class BaseEditText : LinearLayout {    //TODO setSelection, copyAll, cl
                 text = it.substring(0, it.length - 1)
             }
         }
+    }
+
+    /**
+     * Copies all the text to the clipboard, it will use the current label as the clip's label/description
+     */
+    open fun copyAll(){
+        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(label, text)
+
+        clipboard.setPrimaryClip(clip)
+    }
+
+    /**
+     * Clears the text
+     */
+    fun clear(){
+        text = ""
+    }
+
+    /**
+     * Returns the given amount of characters at the start of the text
+     */
+    fun first(count: Int): CharArray?{
+        return text?.let{
+            if (count > it.length){
+                throw Exception("Count must be smaller or the same size of the text\'s length")
+            }
+
+            val array = CharArray(count)
+
+            for ((i, c) in it.substring(0,count).toCharArray().withIndex()){
+                array[i] = c
+            }
+
+            return array
+        }
+    }
+
+    /**
+     * Returns the first character in the text
+     */
+    fun first(): Char?{
+        return first(1)?.get(0)
+    }
+
+    /**
+     * Returns the given amount of characters at the end of the text
+     */
+    fun last(count: Int): CharArray?{
+        return text?.let{
+            if (count > it.length){
+                throw Exception("Count must be smaller or the same size of the text\'s length")
+            }
+
+            val array = CharArray(count)
+
+            for ((i, c) in it.substring(it.length - count,it.length).toCharArray().withIndex()){
+                array[i] = c
+            }
+
+            return array
+        }
+    }
+
+    /**
+     * Returns the last character in the text
+     */
+    fun last(): Char?{
+        return last(1)?.get(0)
     }
 
     /**

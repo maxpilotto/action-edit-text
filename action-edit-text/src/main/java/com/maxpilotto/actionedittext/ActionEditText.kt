@@ -318,6 +318,26 @@ class ActionEditText : BaseEditText {
         _error.visibility = if (enabled) VISIBLE else GONE
     }
 
+    override fun setSelection(index: Int) {
+        _edit.setSelection(index)
+    }
+
+    override fun setText(strRes: Int) {
+        text = context.getString(strRes)
+    }
+
+    override fun setLabel(strRes: Int) {
+        label = context.getString(strRes)
+    }
+
+    override fun setError(strRes: Int) {
+        error = context.getString(strRes)
+    }
+
+    override fun setHint(strRes: Int) {
+        hint = context.getString(strRes)
+    }
+
     companion object {
         private val EMPTY_POST_VALIDATE: PostValidateCallback = { _, _, _ -> }
     }
