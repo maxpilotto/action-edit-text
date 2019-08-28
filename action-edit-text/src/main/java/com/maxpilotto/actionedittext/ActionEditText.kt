@@ -178,6 +178,30 @@ class ActionEditText : BaseEditText {
             field = value
         }
 
+    override var errorAlign: Int
+        set(value) {
+            _error.textAlignment = value
+            field = value
+        }
+
+    override var errorGravity: Int
+        set(value) {
+            _error.gravity = value
+            field = value
+        }
+
+    override var labelAlign: Int
+        set(value) {
+            _label.textAlignment = value
+            field = value
+        }
+
+    override var labelGravity: Int
+        set(value) {
+            _label.gravity = value
+            field = value
+        }
+
     @JvmOverloads
     constructor(
         context: Context,
@@ -208,6 +232,10 @@ class ActionEditText : BaseEditText {
             backgroundFocused = array.getColor(R.styleable.ActionEditText_aed_focusedLineColor, backgroundFocused)
             backgroundNormal = array.getColor(R.styleable.ActionEditText_aed_normalLineColor, backgroundNormal)
             tintAllOnError = array.getBoolean(R.styleable.ActionEditText_aed_tintAllOnError, tintAllOnError)
+            labelGravity = array.getInt(R.styleable.ActionEditText_aed_labelGravity,Gravity.NO_GRAVITY)
+            labelAlign = array.getInt(R.styleable.ActionEditText_aed_labelAlign,Gravity.NO_GRAVITY)
+            errorAlign = array.getInt(R.styleable.ActionEditText_aed_errorAlign,Gravity.NO_GRAVITY)
+            errorGravity = array.getInt(R.styleable.ActionEditText_aed_errorGravity,Gravity.NO_GRAVITY)
             setErrorEnabled(array.getBoolean(R.styleable.ActionEditText_aed_errorEnabled, true))
             setLabelEnabled(array.getBoolean(R.styleable.ActionEditText_aed_labelEnabled, true))
 
@@ -229,6 +257,10 @@ class ActionEditText : BaseEditText {
             textGravity = Gravity.NO_GRAVITY
             textAlign = Gravity.NO_GRAVITY
             maxLength = 0
+            labelGravity = Gravity.NO_GRAVITY
+            labelAlign = Gravity.NO_GRAVITY
+            errorAlign = Gravity.NO_GRAVITY
+            errorGravity = Gravity.NO_GRAVITY
             setErrorEnabled(true)
             setLabelEnabled(true)
         }
