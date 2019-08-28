@@ -19,6 +19,8 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import com.maxpilotto.actionedittext.Default
 import com.maxpilotto.actionedittext.R
 import com.maxpilotto.actionedittext.Util.attr
@@ -36,6 +38,7 @@ open class Toggle : Action<ImageView> {
     /**
      * Icon resource for when the Toggle is checked
      */
+    @DrawableRes
     var checkedRes: Int
         set(value) {
             field = value
@@ -46,6 +49,7 @@ open class Toggle : Action<ImageView> {
     /**
      * Tint for when the Toggle is checked
      */
+    @ColorInt
     var checkedTint: Int
         set(value) {
             field = value
@@ -56,6 +60,7 @@ open class Toggle : Action<ImageView> {
     /**
      * Icon resource for when the Toggle is not checked
      */
+    @DrawableRes
     var uncheckedRes: Int
         set(value) {
             field = value
@@ -66,6 +71,7 @@ open class Toggle : Action<ImageView> {
     /**
      * Tint for when the Toggle is not checked
      */
+    @ColorInt
     var uncheckedTint: Int
         set(value) {
             field = value
@@ -76,6 +82,7 @@ open class Toggle : Action<ImageView> {
     /**
      * Icon resource for both checked and unchecked states
      */
+    @DrawableRes
     var icon: Int
         set(value) {
             uncheckedRes = value
@@ -142,13 +149,6 @@ open class Toggle : Action<ImageView> {
     }
 
     /**
-     * Toggles the toggle
-     */
-    fun toggle() {
-        checked = !checked
-    }
-
-    /**
      * Refresh the icon's tint and resource
      */
     private fun refresh() {
@@ -159,5 +159,12 @@ open class Toggle : Action<ImageView> {
         hasError = applyErrorTint
 
         refresh()
+    }
+
+    /**
+     * Toggles the toggle
+     */
+    fun toggle() {
+        checked = !checked
     }
 }
