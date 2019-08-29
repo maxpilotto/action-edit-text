@@ -2,29 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-ext {
-    bintrayRepo = 'action-edit-text'
-    bintrayName = 'action-edit-text'
-
-    publishedGroupId = 'com.maxpilotto'
-    libraryName = 'action-edit-text'
-    libraryDescription = 'An advanced and customizable EditText that supports actions and advanced text validation'
-    artifact = 'action-edit-text'
-
-    siteUrl = 'https://github.com/maxpilotto/action-edit-text'
-    gitUrl = 'https://github.com/maxpilotto/action-edit-text.git'
-
-    libraryVersion = '2.0.0'
-
-    developerId = 'maxpilotto'
-    developerName = 'Max Pilotto'
-    developerEmail = 'maxpil99@outlook.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -55,10 +32,3 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.0.2'
 }
-
-tasks.withType(Javadoc).all {
-    enabled = false
-}
-
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
