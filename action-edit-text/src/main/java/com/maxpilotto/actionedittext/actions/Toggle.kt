@@ -80,18 +80,6 @@ open class Toggle : Action<ImageView> {
         }
 
     /**
-     * Icon resource for both checked and unchecked states
-     */
-    @DrawableRes
-    var icon: Int
-        set(value) {
-            uncheckedRes = value
-            checkedRes = value
-
-            field = value
-        }
-
-    /**
      * Callback invoked when the CheckBox is toggled
      */
     var onToggle: (Boolean) -> Unit
@@ -134,7 +122,6 @@ open class Toggle : Action<ImageView> {
         }
 
         this.size = Default.ACTION_SIZE
-        this.icon = 0
         this.checkedRes = 0
         this.uncheckedRes = 0
         this.checked = false
@@ -166,5 +153,21 @@ open class Toggle : Action<ImageView> {
      */
     fun toggle() {
         checked = !checked
+    }
+
+    /**
+     * Sets the tint for both states
+     */
+    fun setTint(@ColorInt tint: Int){
+        uncheckedTint = tint
+        checkedTint = tint
+    }
+
+    /**
+     * Sets the icon resource for both states
+     */
+    fun setIcon(@DrawableRes res: Int){
+        uncheckedRes = res
+        checkedRes = res
     }
 }

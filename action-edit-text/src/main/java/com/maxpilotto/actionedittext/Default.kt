@@ -29,7 +29,7 @@ class Default {
          * Default action size, in pixels
          */
         @JvmStatic
-        val ACTION_SIZE = 24.px
+        var ACTION_SIZE = 24.px
 
         /**
          * Width and height of the checkbox, this value is taken from the [docs](https://material.io/design/components/selection-controls.html#specs)
@@ -37,48 +37,48 @@ class Default {
          * The value is increased by a little value to give the view a better look
          */
         @JvmStatic
-        val CHECKBOX_SIZE = (24 + 2).px
+        var CHECKBOX_SIZE = (24 + 2).px
 
         /**
          * Default action text size, in pixels
          */
         @JvmStatic
-        val ACTION_TEXT_SIZE = 12.px
+        var ACTION_TEXT_SIZE = 12.px
 
         /**
          * Default margin, in pixels, added to each Action
          */
         @JvmStatic
-        val ACTION_MARGIN_START = 10.px
+        var ACTION_MARGIN_START = 10.px
 
         /**
          * Default EditText text color
          */
         @JvmStatic
-        val TEXT_COLOR = Color.parseColor("#000000")
+        var TEXT_COLOR = Color.parseColor("#000000")
 
         /**
          * Default EditText error color
          */
         @JvmStatic
-        val ERROR_COLOR = Color.parseColor("#f44336")
+        var ERROR_COLOR = Color.parseColor("#f44336")
 
         /**
          * Default EditText background color
          */
         @JvmStatic
-        val BACKGROUND = Color.parseColor("#aaaaaa")
+        var BACKGROUND = Color.parseColor("#aaaaaa")
 
         /**
          * Default EditText text size, for small texts like the error or the label
          */
         @JvmStatic
-        val TEXT_SIZE_SMALL = 12.px
+        var TEXT_SIZE_SMALL = 12.px
 
         /**
          * Default EditText text size, for normal texts
          */
         @JvmStatic
-        val TEXT_SIZE_NORMAL = 14.px
+        var TEXT_SIZE_NORMAL = 14.px
     }
 }

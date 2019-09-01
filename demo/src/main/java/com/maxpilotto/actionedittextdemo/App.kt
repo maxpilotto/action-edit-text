@@ -16,6 +16,8 @@
 package com.maxpilotto.actionedittextdemo
 
 import android.app.Application
+import android.graphics.Color
+import com.maxpilotto.actionedittext.Default
 
 /**
  * Created on 26/08/2019 at 20:39
@@ -26,5 +28,8 @@ class App : Application() {
 //
 //        Error.EMPTY = getString(R.string.empty)
 //        Error.MIN_LENGTH = getString(R.string.minLength)
+
+        Default.TEXT_COLOR = Color.WHITE
+        Default.ERROR_COLOR = Color.RED
     }
 }
