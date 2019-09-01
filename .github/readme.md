@@ -9,6 +9,7 @@ A customizable EditText that supports actions and has a quick way of validating 
     + [Xml](#xml)
     + [Kotlin](#kotlin)
     + [Actions](#actions)
+    + [Default properties](#default-properties)
     + [Text validation](#text-validation)
     + [Paint it red!](#paint-it-red)
     + [Error handling](#error-handling)
@@ -30,7 +31,7 @@ repositories {
 In your modules's `build.gradle`
 ```gradle 
 dependencies {
-    implementation 'com.github.maxpilotto:action-edit-text:2.0'
+    implementation 'com.github.maxpilotto:action-edit-text:2.1'
 }
 ```
 
@@ -132,6 +133,21 @@ There are different Actions and each of them has different customizable properti
     + uncheckedTint
     + onToggle callback
     + checked value
+
+## Default properties
+Every component (Action & ActionEditText) will be initialized with default values (text color, text size), these values are stored in the `Default` class, these can be changed so that the values will match your application theme for example.  
+
+You should use write the changes inside the your `Application` class
+```java
+class App : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        
+        Default.TEXT_COLOR = Color.WHITE
+        Default.ERROR_COLOR = Color.RED
+    }
+}
+```
 
 
 ## Text validation
