@@ -449,7 +449,7 @@ Full source code [here](https://github.com/maxpilotto/action-edit-text/blob/mast
 
 
 # Demo
-You can download the demo version [here](https://github.com/maxpilotto/action-edit-text/releases/download/1.0.0/demo.apk)
+You can download the demo version [here](hhttps://github.com/maxpilotto/action-edit-text/releases/download/2.1/demo.apk)
 
 # License
 ```
