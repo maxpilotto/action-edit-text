@@ -31,7 +31,7 @@ repositories {
 In your modules's `build.gradle`
 ```gradle 
 dependencies {
-    implementation 'com.github.maxpilotto:action-edit-text:2.1'
+    implementation 'com.github.maxpilotto:action-edit-text:$latest_release'
 }
 ```
 
@@ -444,12 +444,6 @@ public void tintAll(boolean applyErrorTint) {       // Java
 
 Result  <br><br>
 <img src="https://raw.github.com/maxpilotto/action-edit-text/master/.github/imgs/g2.gif">
-
-Full source code [here](https://github.com/maxpilotto/action-edit-text/blob/master/demo/src/main/java/com/maxpilotto/actionedittextdemo/CustomAction.kt)
-
-
-# Demo
-You can download the demo version [here](hhttps://github.com/maxpilotto/action-edit-text/releases/download/2.1/demo.apk)
 
 # License
 ```
