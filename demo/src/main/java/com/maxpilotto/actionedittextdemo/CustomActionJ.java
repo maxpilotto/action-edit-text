@@ -17,7 +17,9 @@ package com.maxpilotto.actionedittextdemo;
 import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.maxpilotto.actionedittext.actions.Action;
+
 import org.jetbrains.annotations.NotNull;
 
 /**

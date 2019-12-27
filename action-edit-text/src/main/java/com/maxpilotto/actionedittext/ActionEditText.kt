@@ -21,7 +21,6 @@ import android.graphics.Typeface
 import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewTreeObserver
@@ -30,8 +29,6 @@ import kotlinx.android.synthetic.main.action_edit_text.view.*
 
 /**
  * Upgraded version of the EditText that supports different types of actions and text validation
- *
- * Created on 08/08/2019 at 20:36
  */
 class ActionEditText : BaseEditText {
     override var label: String?
@@ -98,8 +95,8 @@ class ActionEditText : BaseEditText {
 
     override var textValidator: TextValidator? = null
         set(value) {
-            value?.let{
-                if (it.onPostValidate == null){
+            value?.let {
+                if (it.onPostValidate == null) {
                     it.onPostValidate = { _, errors, _ ->
                         if (errors.isNullOrEmpty()) {
                             error = null
@@ -205,64 +202,38 @@ class ActionEditText : BaseEditText {
     @JvmOverloads
     constructor(
         context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : super(context, attrs, defStyleAttr) {
+        attrs: AttributeSet? = null
+    ) : super(context, attrs) {
         inflate(context, R.layout.action_edit_text, this)
 
-        if (attrs != null) {
-            val array = context.obtainStyledAttributes(attrs, R.styleable.ActionEditText, defStyleAttr, 0)
+        with(context.obtainStyledAttributes(attrs, R.styleable.ActionEditText)) {
+            label = getString(R.styleable.ActionEditText_aed_label)
+            labelColor = getColor(R.styleable.ActionEditText_aed_labelColor, context.attr(R.attr.colorPrimary))
+            labelSize = getDimensionPixelSize(R.styleable.ActionEditText_aed_labelSize, Default.TEXT_SIZE_SMALL)
+            text = getString(R.styleable.ActionEditText_aed_text)
+            textColor = getColor(R.styleable.ActionEditText_aed_textColor, Default.TEXT_COLOR)
+            textSize = getDimensionPixelSize(R.styleable.ActionEditText_aed_textSize, Default.TEXT_SIZE_NORMAL)
+            hint = getString(R.styleable.ActionEditText_aed_hint)
+            hintColor = getColor(R.styleable.ActionEditText_aed_hintColor, Default.BACKGROUND)
+            error = getString(R.styleable.ActionEditText_aed_error)
+            errorColor = getColor(R.styleable.ActionEditText_aed_textColor, Default.ERROR_COLOR)
+            errorSize = getDimensionPixelSize(R.styleable.ActionEditText_aed_errorSize, Default.TEXT_SIZE_SMALL)
+            editable = getBoolean(R.styleable.ActionEditText_aed_editable, true)
+            inputType = getInt(R.styleable.ActionEditText_aed_inputType, InputType.TEXT)
+            textGravity = getInt(R.styleable.ActionEditText_aed_textGravity, Gravity.NO_GRAVITY)
+            textAlign = getInt(R.styleable.ActionEditText_aed_textAlign, Gravity.NO_GRAVITY)
+            maxLength = getInt(R.styleable.ActionEditText_aed_maxLength, 0)
+            backgroundFocused = getColor(R.styleable.ActionEditText_aed_focusedLineColor, backgroundFocused)
+            backgroundNormal = getColor(R.styleable.ActionEditText_aed_normalLineColor, backgroundNormal)
+            tintAllOnError = getBoolean(R.styleable.ActionEditText_aed_tintAllOnError, tintAllOnError)
+            labelGravity = getInt(R.styleable.ActionEditText_aed_labelGravity, Gravity.NO_GRAVITY)
+            labelAlign = getInt(R.styleable.ActionEditText_aed_labelAlign, Gravity.NO_GRAVITY)
+            errorAlign = getInt(R.styleable.ActionEditText_aed_errorAlign, Gravity.NO_GRAVITY)
+            errorGravity = getInt(R.styleable.ActionEditText_aed_errorGravity, Gravity.NO_GRAVITY)
+            setErrorEnabled(getBoolean(R.styleable.ActionEditText_aed_errorEnabled, true))
+            setLabelEnabled(getBoolean(R.styleable.ActionEditText_aed_labelEnabled, true))
 
-            label = array.getString(R.styleable.ActionEditText_aed_label)
-            labelColor = array.getColor(R.styleable.ActionEditText_aed_labelColor, context.attr(R.attr.colorPrimary))
-            labelSize = array.getDimensionPixelSize(R.styleable.ActionEditText_aed_labelSize, Default.TEXT_SIZE_SMALL)
-            text = array.getString(R.styleable.ActionEditText_aed_text)
-            textColor = array.getColor(R.styleable.ActionEditText_aed_textColor, Default.TEXT_COLOR)
-            textSize = array.getDimensionPixelSize(R.styleable.ActionEditText_aed_textSize, Default.TEXT_SIZE_NORMAL)
-            hint = array.getString(R.styleable.ActionEditText_aed_hint)
-            hintColor = array.getColor(R.styleable.ActionEditText_aed_hintColor, Default.BACKGROUND)
-            error = array.getString(R.styleable.ActionEditText_aed_error)
-            errorColor = array.getColor(R.styleable.ActionEditText_aed_textColor, Default.ERROR_COLOR)
-            errorSize = array.getDimensionPixelSize(R.styleable.ActionEditText_aed_errorSize, Default.TEXT_SIZE_SMALL)
-            editable = array.getBoolean(R.styleable.ActionEditText_aed_editable, true)
-            inputType = array.getInt(R.styleable.ActionEditText_aed_inputType, InputType.TEXT)
-            textGravity = array.getInt(R.styleable.ActionEditText_aed_textGravity, Gravity.NO_GRAVITY)
-            textAlign = array.getInt(R.styleable.ActionEditText_aed_textAlign, Gravity.NO_GRAVITY)
-            maxLength = array.getInt(R.styleable.ActionEditText_aed_maxLength, 0)
-            backgroundFocused = array.getColor(R.styleable.ActionEditText_aed_focusedLineColor, backgroundFocused)
-            backgroundNormal = array.getColor(R.styleable.ActionEditText_aed_normalLineColor, backgroundNormal)
-            tintAllOnError = array.getBoolean(R.styleable.ActionEditText_aed_tintAllOnError, tintAllOnError)
-            labelGravity = array.getInt(R.styleable.ActionEditText_aed_labelGravity,Gravity.NO_GRAVITY)
-            labelAlign = array.getInt(R.styleable.ActionEditText_aed_labelAlign,Gravity.NO_GRAVITY)
-            errorAlign = array.getInt(R.styleable.ActionEditText_aed_errorAlign,Gravity.NO_GRAVITY)
-            errorGravity = array.getInt(R.styleable.ActionEditText_aed_errorGravity,Gravity.NO_GRAVITY)
-            setErrorEnabled(array.getBoolean(R.styleable.ActionEditText_aed_errorEnabled, true))
-            setLabelEnabled(array.getBoolean(R.styleable.ActionEditText_aed_labelEnabled, true))
-
-            array.recycle()
-        } else {
-            label = null
-            labelColor = context.attr(R.attr.colorPrimary)
-            labelSize = Default.TEXT_SIZE_SMALL
-            text = null
-            textColor = Default.TEXT_COLOR
-            textSize = Default.TEXT_SIZE_NORMAL
-            hint = null
-            hintColor = Default.BACKGROUND
-            error = null
-            errorColor = Default.ERROR_COLOR
-            errorSize = Default.TEXT_SIZE_SMALL
-            editable = true
-            inputType = InputType.TEXT
-            textGravity = Gravity.NO_GRAVITY
-            textAlign = Gravity.NO_GRAVITY
-            maxLength = 0
-            labelGravity = Gravity.NO_GRAVITY
-            labelAlign = Gravity.NO_GRAVITY
-            errorAlign = Gravity.NO_GRAVITY
-            errorGravity = Gravity.NO_GRAVITY
-            setErrorEnabled(true)
-            setLabelEnabled(true)
+            recycle()
         }
 
         _edit.setOnFocusChangeListener { _, focused ->
@@ -384,9 +355,5 @@ class ActionEditText : BaseEditText {
 
     override fun setLabelColorRes(colorRes: Int) {
         labelColor = context.resources.getColor(colorRes)
-    }
-
-    companion object {
-        private val EMPTY_POST_VALIDATE: PostValidateCallback = { _, _, _ -> }
     }
 }

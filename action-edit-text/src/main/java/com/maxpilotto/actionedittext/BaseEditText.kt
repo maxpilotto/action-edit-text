@@ -15,27 +15,22 @@
  */
 package com.maxpilotto.actionedittext
 
+import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
-import com.maxpilotto.actionedittext.Util.attr
-import com.maxpilotto.actionedittext.actions.Action
-import java.lang.Exception
-import android.R.attr.label
-import android.content.ClipData
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
-import androidx.core.content.ContextCompat.getSystemService
+import com.maxpilotto.actionedittext.Util.attr
+import com.maxpilotto.actionedittext.actions.Action
 
 typealias ActionList = MutableList<Action<*>>
 
 /**
  * Base ActionEditText class
- *
- * Created on 13/08/2019 at 15:30
  */
 abstract class BaseEditText : LinearLayout {
     /**
@@ -205,9 +200,8 @@ abstract class BaseEditText : LinearLayout {
     @JvmOverloads
     constructor(
         context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : super(context, attrs, defStyleAttr)
+        attrs: AttributeSet? = null
+    ) : super(context, attrs)
 
     /**
      * Refreshes the layout, this should be called after all actions have been added
@@ -295,7 +289,7 @@ abstract class BaseEditText : LinearLayout {
     /**
      * Copies all the text to the clipboard, it will use the current label as the clip's label/description
      */
-    open fun copyAll(){
+    open fun copyAll() {
         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText(label, text)
 
@@ -305,22 +299,22 @@ abstract class BaseEditText : LinearLayout {
     /**
      * Clears the text
      */
-    fun clear(){
+    fun clear() {
         text = ""
     }
 
     /**
      * Returns the given amount of characters at the start of the text
      */
-    fun first(count: Int): CharArray?{
-        return text?.let{
-            if (count > it.length){
+    fun first(count: Int): CharArray? {
+        return text?.let {
+            if (count > it.length) {
                 throw Exception("Count must be smaller or the same size of the text\'s length")
             }
 
             val array = CharArray(count)
 
-            for ((i, c) in it.substring(0,count).toCharArray().withIndex()){
+            for ((i, c) in it.substring(0, count).toCharArray().withIndex()) {
                 array[i] = c
             }
 
@@ -331,22 +325,22 @@ abstract class BaseEditText : LinearLayout {
     /**
      * Returns the first character in the text
      */
-    fun first(): Char?{
+    fun first(): Char? {
         return first(1)?.get(0)
     }
 
     /**
      * Returns the given amount of characters at the end of the text
      */
-    fun last(count: Int): CharArray?{
-        return text?.let{
-            if (count > it.length){
+    fun last(count: Int): CharArray? {
+        return text?.let {
+            if (count > it.length) {
                 throw Exception("Count must be smaller or the same size of the text\'s length")
             }
 
             val array = CharArray(count)
 
-            for ((i, c) in it.substring(it.length - count,it.length).toCharArray().withIndex()){
+            for ((i, c) in it.substring(it.length - count, it.length).toCharArray().withIndex()) {
                 array[i] = c
             }
 
@@ -357,7 +351,7 @@ abstract class BaseEditText : LinearLayout {
     /**
      * Returns the last character in the text
      */
-    fun last(): Char?{
+    fun last(): Char? {
         return last(1)?.get(0)
     }
 
@@ -390,7 +384,7 @@ abstract class BaseEditText : LinearLayout {
      * Manually calls the internal TextValidator so it looks for errors
      */
     fun checkErrors() {
-        textValidator?.onTextChanged(text,0,0,0)
+        textValidator?.onTextChanged(text, 0, 0, 0)
     }
 
     /**
