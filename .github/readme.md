@@ -17,7 +17,6 @@ A customizable EditText that supports actions and has a quick way of validating 
     + [Custom errors](#custom-errors)
     + [Custom input validation](#custom-input-validation)
     + [Custom actions](#custom-actions)
-+ [Demo](#demo)
 + [License](#license)
 
 # Getting started
