@@ -16,12 +16,15 @@
 package com.maxpilotto.actionedittextdemo;
 import android.graphics.Color;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.maxpilotto.actionedittext.ActionEditText;
 import com.maxpilotto.actionedittext.TextValidator;
 import com.maxpilotto.actionedittext.actions.Icon;
 import com.maxpilotto.actionedittext.actions.Toggle;
+
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
